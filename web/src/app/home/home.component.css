@@ -1,0 +1,18 @@
+/* Apply a green color for grades greater than 80% */
+.grade-green {
+    color: green;
+    font-weight: bold;
+  }
+  
+  /* Apply an orange color for grades between 50% and 80% */
+  .grade-orange {
+    color: orange;
+    font-weight: bold;
+  }
+  
+  /* Apply a red color for grades less than 50% */
+  .grade-red {
+    color: red;
+    font-weight: bold;
+  }
+  
