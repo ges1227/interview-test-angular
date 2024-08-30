@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System;
 
 namespace StudentApi.Controllers
 {
@@ -36,6 +37,30 @@ namespace StudentApi.Controllers
             var reponse = await Mediator.Send(new GetStudentsRequest());
 
             return reponse.Students;
+        }
+
+        [HttpPost]
+        public async Task<bool> AddStudent([FromBody] AddStudentRequest request){
+            if(request == null){
+                return false;
+            }
+
+            var response = await Mediator.Send(request);
+
+            return response.Success;
+        }
+
+
+        [HttpDelete]
+        public async Task<bool> DeleteStudent([FromBody] DeleteStudentRequest request){
+            
+            if(request == null){
+                return false;
+            }
+
+            var response = await Mediator.Send(request);
+
+            return response.Success;
         }
     }
 }

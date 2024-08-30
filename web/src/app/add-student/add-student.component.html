@@ -1,0 +1,52 @@
+<div class="container">
+  <h2>Add Student</h2>
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="first-name">First Name</label>
+      <input type="text" id="first-name" class="form-control" formControlName="firstName"
+        placeholder="Enter student name" />
+      <div *ngIf="submitted && studentForm.controls['firstName'].errors" class="text-danger">
+        <div *ngIf="studentForm.controls['firstName'].errors['required']">First name is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="last-name">Last Name</label>
+      <input type="text" id="last-name" class="form-control" formControlName="lastName"
+        placeholder="Enter student name" />
+      <div *ngIf="submitted && studentForm.controls['lastName'].errors" class="text-danger">
+        <div *ngIf="studentForm.controls['lastName'].errors['required']">Last name is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter student email" />
+      <div *ngIf="submitted && studentForm.controls['email'].errors" class="text-danger">
+        <div *ngIf="studentForm.controls['email'].errors['required']">Email is required.</div>
+        <div *ngIf="studentForm.controls['email'].errors['email']">Email must be valid.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="major">Major</label>
+      <input type="text" id="major" class="form-control" formControlName="major" placeholder="Enter student's major" />
+      <div *ngIf="submitted && studentForm.controls['major'].errors" class="text-danger">
+        <div *ngIf="studentForm.controls['major'].errors['required']">Major is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="average-grade">Average Grade</label>
+      <input type="number" id="average-grade" class="form-control" formControlName="averageGrade"
+        placeholder="Enter student's average grade" />
+      <div *ngIf="submitted && studentForm.controls['averageGrade'].errors" class="text-danger">
+        <div *ngIf="studentForm.controls['averageGrade'].errors['required']">Average grade is required.</div>
+        <div *ngIf="studentForm.controls['averageGrade'].errors['min']">Average grade must be at least 1.</div>
+        <div *ngIf="studentForm.controls['averageGrade'].errors['max']">Average grade must be no more than 6.</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Student</button>
+  </form>
+</div>

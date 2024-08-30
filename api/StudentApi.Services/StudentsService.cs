@@ -15,14 +15,17 @@ namespace StudentApi.Services
                 FirstName = "Marty",
                 LastName = "McFly",
                 Email = "back.future@test.com",
-                Major = "History"
+                Major = "History",
+                AverageGrade = 1.3f
             });
 
-            students.Add(new Student {
+            students.Add(new Student
+            {
                 FirstName = "Emmett",
                 LastName = "Brown",
                 Email = "dr.brown@test.com",
-                Major = "Physics"
+                Major = "Physics",
+                AverageGrade = 2.1f
             });
 
             students.Add(new Student
@@ -30,7 +33,8 @@ namespace StudentApi.Services
                 FirstName = "Biff",
                 LastName = "Tannen",
                 Email = "biff@test.com",
-                Major = "PE"
+                Major = "PE",
+                AverageGrade = 4.3f
             });
         }
 
@@ -39,10 +43,19 @@ namespace StudentApi.Services
         /// </summary>
         /// <param name="student"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public bool AddStudent(Student student)
         {
-            throw new NotImplementedException();
+
+            try
+            {
+                students.Add(student);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write("Exception occured while adding student:", e);
+                return false;
+            }
         }
 
         /// <summary>
@@ -50,10 +63,12 @@ namespace StudentApi.Services
         /// </summary>
         /// <param name="student"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
         public bool DeleteStudent(Student student)
         {
-            throw new NotImplementedException();
+
+            var foundStudent = students.Find(s => s.Email == student.Email);
+            Console.Write("Deleting Student.");
+            return students.Remove(foundStudent);
         }
 
         /// <summary>
